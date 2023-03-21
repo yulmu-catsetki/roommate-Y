@@ -38,6 +38,48 @@
 			margin-bottom: 20px;
 		}
 
+        .container2 {position: relative;
+            display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			margin-top: 50px;
+            
+		}
+        
+		.prev, .next {
+			position: absolute;
+            margin-right: 400px;
+            margin-left: 400px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 20px;
+			font-weight: bold;
+			padding: 10px;
+			background-color: rgba(63, 118, 182, 0.7);
+			border: none;
+			cursor: pointer;
+			transition: all 0.3s ease;
+            
+		}
+		.prev:hover, .next:hover {
+			background-color: rgba(255, 255, 255, 0.9);
+		}
+		.prev {
+			left: 0;
+		}
+		.next {
+			right: 0;
+		}
+
+        .slide {
+			width: 400px;
+			height: 400px;
+			object-fit: cover;
+			margin-bottom: 20px;
+		}
+
+
 		/* 소개 텍스트 스타일 */
 		.intro {
 			font-size: 20px;
@@ -48,17 +90,7 @@
 			margin-bottom: 30px;
 		}
 
-		/* 링크 스타일 */
-		a {
-			color: #333;
-			text-decoration: none;
-			font-weight: bold;
-			transition: all 0.3s ease-in-out;
-		}
-
-		a:hover {
-			color: #ff9900;
-		}
+		
 	</style>
 </head>
 <body>
@@ -73,8 +105,52 @@
 		<!-- 소개 텍스트 -->
 		<p class="intro">안녕하세요! 저는 김율무입니다. 저의 멋진 자태를 보시죠.</p>
 
-		<!-- 링크 버튼 -->
-		<a href="#" class="link-btn">더 알아보기</a>
 	</div>
+
+    <div class="container2">
+        <!-- 소개 텍스트 -->
+		<p class="intro">룸메이트 Y씨 1화</p>
+		<!-- 슬라이드 쇼 이미지를 담는 div -->
+		<div class="slideshow">
+			<img class="slide" src="img/cat (2).png">
+			<img class="slide" src="img/cat (8).png">
+			<img class="slide" src="img/cat (7).png">
+            <img class="slide" src="img/cat (4).png">
+            <img class="slide" src="img/cat (5).png">
+            <img class="slide" src="img/cat (6).png">
+            <img class="slide" src="img/cat (3).png">
+            <img class="slide" src="img/cat (1).png">
+		</div>
+
+        <!-- 이전 버튼 -->
+        <button class="prev" onclick="prevSlide()">이전</button>
+		<!-- 다음 버튼 -->
+		<button class="next" onclick="nextSlide()">다음</button>
+	</div>
+
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function nextSlide() {
+			showSlides(slideIndex += 1);
+		}
+
+		function prevSlide() {
+			showSlides(slideIndex -= 1);  
+		}
+
+		function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("slide");
+			if (n > slides.length) {slideIndex = 1}
+			if (n < 1) {slideIndex = slides.length}
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+			slides[slideIndex-1].style.display = "block";
+		}
+	</script>
+
 </body>
 </html>
