@@ -82,12 +82,20 @@
 		/* 소개 텍스트 스타일 */
 		.intro {
 			font-size: 20px;
-			line-height: 1.5;
+	
 			color: #666;
 			text-align: center;
 			max-width: 600px;
-			margin-bottom: 30px;
+			
 		}
+
+        .slide-number{
+            font-size: 20px;
+			color: #7125d4;
+			text-align: center;
+
+			
+        }
 
 		
 	</style>
@@ -109,7 +117,7 @@
     <div class="container2">
         <!-- 소개 텍스트 -->
 		<p class="intro">룸메이트 Y씨 1화</p>
-        <div class="slide-number"></div>
+        <!--<p class="slide-number">/8</p>-->
 		<!-- 슬라이드 쇼 이미지를 담는 div -->
 		<div class="slideshow">
 			<img class="slide" src="img/cat (2).png">
@@ -134,6 +142,7 @@
             slideNumber.innerText = `${slideIndex + 1}/${slideCount}`;
                 }
 		var slideIndex = 1;
+
 		showSlides(slideIndex);
 
 		
