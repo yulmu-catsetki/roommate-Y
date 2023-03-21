@@ -14,7 +14,7 @@
 
 		/* 타이틀 스타일 */
 		h1 {
-			color: #333;
+			color: #204acb;
 			text-align: center;
 			margin-top: 50px;
             
@@ -49,8 +49,7 @@
         
 		.prev, .next {
 			position: absolute;
-            margin-right: 400px;
-            margin-left: 400px;
+     
 			top: 50%;
 			transform: translateY(-50%);
 			font-size: 20px;
@@ -95,7 +94,7 @@
 </head>
 <body>
 	<!-- 타이틀 -->
-	<h1>나만의 미니홈피</h1>
+	<h1>만화 보세요</h1>
 
 	<!-- 메인 컨테이너 -->
 	<div class="container">
@@ -110,6 +109,7 @@
     <div class="container2">
         <!-- 소개 텍스트 -->
 		<p class="intro">룸메이트 Y씨 1화</p>
+        <div class="slide-number"></div>
 		<!-- 슬라이드 쇼 이미지를 담는 div -->
 		<div class="slideshow">
 			<img class="slide" src="img/cat (2).png">
@@ -129,16 +129,31 @@
 	</div>
 
 	<script>
+        let slideNumber = document.getElementsByClassName("slide-number");
+        function updateSlideNumber(slideIndex) {
+            slideNumber.innerText = `${slideIndex + 1}/${slideCount}`;
+                }
 		var slideIndex = 1;
 		showSlides(slideIndex);
 
-		function nextSlide() {
-			showSlides(slideIndex += 1);
-		}
+		
+        function prevSlide() {
+            showSlides(slideIndex -= 1);  
+        if (slideIndex === 0) {
+            return;
+            }
+            slideIndex--;
+         updateSlideNumber(slideIndex);
+        }
 
-		function prevSlide() {
-			showSlides(slideIndex -= 1);  
-		}
+        function nextSlide() {
+        showSlides(slideIndex += 1);
+        if (slideIndex === slideCount - 1) {
+        return;
+        }
+        slideIndex++;
+         updateSlideNumber(slideIndex);
+        }
 
 		function showSlides(n) {
 			var i;
